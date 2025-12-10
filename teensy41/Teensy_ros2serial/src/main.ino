@@ -1,9 +1,14 @@
 #include "packet.h"
 #include "Arduino.h"
 
+#define LED_WAIT_MS (50)
+
 IntervalTimer timer;
 
+unsigned long packet_recv_ts = 0;
+
 void packet_recv_cb(const int id, const int len, const uint8_t* data){
+  packet_recv_ts = millis();
   // 受信したときの処理
 }
 
@@ -15,7 +20,7 @@ void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   packet_begin();
   digitalWrite(LED_BUILTIN, HIGH);
-  timer.begin(timer_callback, 10 * 1000); // 10ms interval
+  timer.begin(timer_callback, 10 * 1000); // 10ms 
 }
 
 void loop() {
