@@ -1,0 +1,1 @@
+ros2serial_msgs/CAN[] array
